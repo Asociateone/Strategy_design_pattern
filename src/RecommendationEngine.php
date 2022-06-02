@@ -13,9 +13,10 @@ class RecommendationEngine
         $this->strategies = self::getStrategys();
     }
 
-    public function getRecommendation()
+    public function getRecommendation($recommendation)
     {
         var_dump($this->strategies);
+        
         die;
     }
 
