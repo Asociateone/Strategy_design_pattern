@@ -4,7 +4,7 @@ namespace Strategys;
 
 class LetTheAlgorithmDecide implements RecommendationStrategyInterface
 {
-    public function getRecommendation(): array
+    public static function getRecommendation(): array
     {
         $arr = [
             'Let The Algorithm Decide',

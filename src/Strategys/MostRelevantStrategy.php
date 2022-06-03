@@ -2,9 +2,9 @@
 
 namespace Strategys;
 
-class MoestRelevantStrategy implements RecommendationStrategyInterface
+class MostRelevantStrategy implements RecommendationStrategyInterface
 {
-    public function getRecommendation(): array
+    public static function getRecommendation(): array
     {
         $arr = [
             'Most relevant Strat',

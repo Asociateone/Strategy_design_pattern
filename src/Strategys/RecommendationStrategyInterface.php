@@ -4,5 +4,5 @@ namespace Strategys;
 
 interface RecommendationStrategyInterface
 {
-    public function getRecommendation(): array;
+    public static function getRecommendation(): array;
 }

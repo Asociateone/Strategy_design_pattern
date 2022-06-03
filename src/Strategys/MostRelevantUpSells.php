@@ -4,7 +4,7 @@ namespace Strategys;
 
 class MostRelevantUpSells implements RecommendationStrategyInterface
 {
-    public function getRecommendation(): array
+    public static function getRecommendation(): array
     {
         $arr = [
             'MostRelevantUpSells',

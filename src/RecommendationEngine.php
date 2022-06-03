@@ -16,25 +16,32 @@ class RecommendationEngine
         return $this->strategies;
     }
 
-    public function setRecommendation(mixed $recommendation)
+    public function setRecommendation($recommendation)
     {
-        gettype($recommendation) == 'string' ?? $recommendation = $this->recommendationString($recommendation);
-
-        gettype($recommendation) == 'array' ?? $recommendation = $this->recommendationArray($recommendation);
+        $recommendation = (gettype($recommendation) == 'string') ?  $this->singleStrategy($recommendation) : $this->multipleStrategy($recommendation);
 
         return $recommendation;
     }
 
-    private function recommendationString($recommendation)
+    private function singleStrategy($recommendation)
     {
-        var_dump("hello world");
-        return var_dump($recommendation);
+        $recommendation = 'Strategys\\' . $recommendation;
+
+        $recommendation = $recommendation::getRecommendation();
+
+        return $recommendation;
     }
 
-    private function recommendationArray($recommendation)
+    private function multipleStrategy($recommendations)
     {
-        var_dump('array');
-        return $recommendation;
+        $arr = [];
+
+        foreach ($recommendations as $recommendation) {
+            $recommendation = 'Strategys\\' . $recommendation;
+            $arr[] = $recommendation::getRecommendation();
+        }
+
+        return $arr;
     }
 
     private function getStrategys()
@@ -43,7 +50,7 @@ class RecommendationEngine
 
         $files = scandir($path);
         $files = str_replace('.php', '', $files);
-        $files = array_values(array_diff($files, array('.', '..')));
+        $files = array_values(array_diff($files, array('.', '..', 'RecommendationStrategyInterface')));
 
         return $files;
     }
