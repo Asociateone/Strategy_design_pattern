@@ -8,6 +8,6 @@ $engine = new RecommendationEngine();
 
 $recomendations = $engine->getRecommendation();
 
-// var_dump($engine->setRecommendation($recomendations[0]));
+var_dump($engine->setRecommendation($recomendations[0]));
 
-var_dump($engine->setRecommendation($recomendations));
+// var_dump($engine->setRecommendation($recomendations));
