@@ -6,4 +6,8 @@ use Engine\RecommendationEngine;
 
 $engine = new RecommendationEngine();
 
-$engine->getRecommendation("most relevant up sells");
+$recomendations = $engine->getRecommendation();
+
+// var_dump($engine->setRecommendation($recomendations[0]));
+
+var_dump($engine->setRecommendation($recomendations[0]));

@@ -2,8 +2,6 @@
 
 namespace Engine;
 
-use Strategys\MoestRelevantStrategy;
-
 class RecommendationEngine
 {
     private array $strategies;
@@ -13,18 +11,35 @@ class RecommendationEngine
         $this->strategies = self::getStrategys();
     }
 
-    public function getRecommendation($recommendation)
+    public function getRecommendation()
     {
-        var_dump($this->strategies);
-        
-        die;
+        return $this->strategies;
+    }
+
+    public function setRecommendation(mixed $recommendation)
+    {
+        gettype($recommendation) == 'string' ?? $recommendation = $this->recommendationString($recommendation);
+
+        gettype($recommendation) == 'array' ?? $recommendation = $this->recommendationArray($recommendation);
+
+        return $recommendation;
+    }
+
+    private function recommendationString($recommendation)
+    {
+        var_dump("hello world");
+        return var_dump($recommendation);
+    }
+
+    private function recommendationArray($recommendation)
+    {
+        var_dump('array');
+        return $recommendation;
     }
 
     private function getStrategys()
     {
         $path = __DIR__ . '/Strategys/';
-
-        $files = scandir($path);
 
         $files = scandir($path);
         $files = str_replace('.php', '', $files);
